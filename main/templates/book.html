@@ -1,0 +1,39 @@
+{% extends "home.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+
+
+    <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="page-header">
+
+                            <huge><p>{{ book_result.status }}</p></huge>
+
+                            <small><p>{% for name in book_result.confirmation_numbers.0.names %}</p><p>name: {{ name }}{% endfor %}</p></small>
+                            <small><p>checkin: {{ book_result.checkin }}</p></small>
+                            <small><p>checkout: {{ book_result.checkout }}</p></small>
+                            <small><p>price: {{ book_result.price }}</p></small>
+                            <small><p>meal type: {{ book_result.mealtype_code }}</p></small>
+
+                        </h1>
+                        <a href="{% url 'search' %}" class="btn btn-primary btn-lg">Make a new search</a>
+                    </div>
+                </div>
+                <!-- /.row -->
+    </div>
+
+
+<!-- <form role="form" action="{% url 'search' %}" method="get" class="form-horizontal">
+    <div class="form-group">
+       <div>
+           <input type="submit" class="btn btn-primary btn-lg" name="make_new_search" value="make a new search" />
+       </div>
+    </div>
+</form> -->
+
+{% endblock %}

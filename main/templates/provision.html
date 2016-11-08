@@ -1,0 +1,55 @@
+{% extends "home.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+<div class="panel-body">
+    <form role="form" action="{% url 'provision' product_code=product_code %}"
+          method="post" class="form-horizontal">
+        {% csrf_token %}
+        <fieldset>
+
+        <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="page-header">
+                            <small><p>Destination: {{ result_dict.destination }}</p></small>
+                            <small><p>Hotel: {{ result_dict.hotel }}</p></small>
+                            <small><p>Price: {{ result_dict.price }}</p></small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+        </div>
+
+            {% for index in pax_generator %}
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="name"
+                           name="name" type="text" autofocus>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <input class="form-control" placeholder="email"
+                           name="email" type="email" value="">
+                </div>
+
+            </div>
+            <!-- Change this to a button or input when using this as a form -->
+            <div class="form-group">
+                <div class="col-sm-2 col-sm-offset-4">
+                    <input type="submit"
+                           class="btn btn-lg btn-success btn-block"
+                           name="provision_book" value="Book Now"/>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

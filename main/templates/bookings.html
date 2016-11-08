@@ -1,0 +1,37 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% load static %}
+<h3 class="text-center">MY BOOKINGS</h3>
+
+{% if bookings %}
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="warning">
+                <th>Booking Code</th>
+                <th>Room Type</th>
+                <th>Room Description</th>
+                <th>Pax Names</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.booking_code }}</td>
+                <td>{{ booking.room_type }}</td>
+                <td>{{ booking.room_description }}</td>
+                <td>{{ booking.pax_names }}</td>
+                <td>{{ booking.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-warning text-center">{{ 'There is no bookings!'|upper }}</div>
+{% endif %}
+
+{% endblock %}
